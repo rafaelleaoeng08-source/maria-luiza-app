@@ -132,6 +132,29 @@
     OneSignal.showSlidedownPrompt();
   });
 </script>
+<button onclick="ativarNotificacao()" style="
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 15px;
+  background: #ff4da6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  z-index: 9999;
+">
+🔔 Ativar notificações
+</button>
 
+<script>
+function ativarNotificacao() {
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(function(OneSignal) {
+    OneSignal.showSlidedownPrompt();
+  });
+}
+</script>
 </body>
 </html>
