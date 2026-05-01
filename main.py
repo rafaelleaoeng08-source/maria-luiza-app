@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect
 import json
 from datetime import datetime, timedelta
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='.')
 
 # ======================
 # BANCO DE DADOS
@@ -109,6 +109,10 @@ def tomar_remedio(index):
 @app.route("/manifest.json")
 def manifest():
     return app.send_static_file("manifest.json")
+
+@app.route("/OneSignalSDKWorker.js")
+def onesignal_worker():
+    return app.send_static_file("OneSignalSDKWorker.js")
 
 if __name__ == "__main__":
     app.run()
