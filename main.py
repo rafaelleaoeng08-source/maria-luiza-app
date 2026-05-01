@@ -31,7 +31,7 @@ def enviar_notificacao(titulo, mensagem):
 
     payload = {
         "app_id": ONESIGNAL_APP_ID,
-        "included_segments": ["All"],
+        "included_segments": ["Total Subscriptions"],
         "headings": {"en": titulo},
         "contents": {"en": mensagem}
     }
