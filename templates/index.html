@@ -123,14 +123,15 @@
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "adc50cce-7803-4997-b030-16e794a792bb",
-    });
-
-    // 🔥 FORÇA PEDIR PERMISSÃO
-    OneSignal.showSlidedownPrompt();
+OneSignalDeferred.push(async function(OneSignal) {
+  await OneSignal.init({
+    appId: "adc50cce-7803-4997-b030-16e794a792bb",
   });
+
+  const permission = await OneSignal.Notifications.requestPermission();
+
+  console.log("Permissão:", permission);
+});
 </script>
 <button onclick="ativarNotificacao()" style="
   position: fixed;
@@ -152,7 +153,7 @@
 function ativarNotificacao() {
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(function(OneSignal) {
-    OneSignal.showSlidedownPrompt();
+    OneSignal.Notifications.requestPermission();
   });
 }
 </script>

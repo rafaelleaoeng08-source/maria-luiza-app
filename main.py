@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect
+from flask import send_from_directory
 import json
 from datetime import datetime, timedelta
 import requests
@@ -134,7 +135,7 @@ def manifest():
 
 @app.route("/OneSignalSDKWorker.js")
 def onesignal_worker():
-    return app.send_static_file("OneSignalSDKWorker.js")
+    return send_from_directory("static", "OneSignalSDKWorker.js")
 
 @app.route("/teste_notificacao")
 def teste_notificacao():
