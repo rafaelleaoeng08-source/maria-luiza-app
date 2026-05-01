@@ -136,6 +136,11 @@ def manifest():
 def onesignal_worker():
     return app.send_static_file("OneSignalSDKWorker.js")
 
+@app.route("/teste_notificacao")
+def teste_notificacao():
+    enviar_notificacao("Teste 🚀", "Chegou no celular!")
+    return "Notificação enviada!"
+
 if __name__ == "__main__":
     enviar_notificacao("Teste 🚀", "Notificação funcionando!")
     app.run()
