@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask import send_from_directory
+from notificacoes import enviar_notificacao
 import json
 from datetime import datetime, timedelta
 import requests
@@ -22,23 +23,7 @@ def carregar():
 def salvar(dados):
     with open("banco_dados.json", "w") as f:
         json.dump(dados, f, indent=4)
-def enviar_notificacao(titulo, mensagem):
-    url = "https://onesignal.com/api/v1/notifications"
 
-    headers = {
-        "Content-Type": "application/json; charset=utf-8",
-        "Authorization": f"Basic {ONESIGNAL_API_KEY}"
-    }
-
-    payload = {
-        "app_id": ONESIGNAL_APP_ID,
-        "included_segments": ["Total Subscriptions"],
-        "headings": {"en": titulo},
-        "contents": {"en": mensagem}
-    }
-
-    response = requests.post(url, headers=headers, json=payload)
-    print(response.text)
 # ======================
 # ROTAS
 # ======================
@@ -140,11 +125,10 @@ def onesignal_worker():
 @app.route("/teste_notificacao")
 def teste():
     try:
-        enviar_notificacao()
-        return "Notificação enviada!"
+        resposta = enviar_notificacao()
+        return f"Notificação enviada!<br>{resposta}"
     except Exception as e:
         return f"Erro: {str(e)}"
 
 if __name__ == "__main__":
-    enviar_notificacao("Teste 🚀", "Notificação funcionando!")
     app.run()
