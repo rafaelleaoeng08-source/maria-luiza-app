@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Maria Luiza 💖</title>
+
+<link rel="stylesheet" href="/static/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<!-- PWA -->
+<link rel="manifest" href="/static/manifest.json">
+<meta name="theme-color" content="#ff4da6">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <div class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+        <div>
+            <h2>Maria Luiza 💖</h2>
+            <p>Rotina da nossa princesa</p>
+        </div>
+    </div>
+
+    <!-- CARDS -->
+    <div class="cards">
+        <div class="card pink">
+            <h3>💊</h3>
+            <span>{{ dados.medicamentos|length }}</span>
+            <p>Remédios</p>
+        </div>
+
+        <div class="card purple">
+            <h3>🏥</h3>
+            <span>{{ dados.consultas|length }}</span>
+            <p>Consultas</p>
+        </div>
+
+        <div class="card green">
+            <h3>🍼</h3>
+            <span>{{ dados.mamadas|length }}</span>
+            <p>Mamadas</p>
+        </div>
+    </div>
+
+    <!-- EVENTOS -->
+    <div class="events">
+        <h3>📅 Próximos eventos</h3>
+
+        {% for r in dados.medicamentos %}
+        <div class="event pink">
+            💊 {{ r.nome }}
+            <span>Próximo: {{ r.proximo }}</span>
+
+            <div class="acoes">
+                <a href="/tomar_remedio/{{ loop.index0 }}" class="ok" onclick="return confirm('Confirmar que deu o remédio?')">✔</a>
+                <a href="/delete/medicamentos/{{ loop.index0 }}" class="delete">🗑️</a>
+            </div>
+        </div>
+        {% endfor %}
+
+        {% for c in dados.consultas %}
+        <div class="event purple">
+            🏥 {{ c.tipo }}
+            <span>{{ c.data }} {{ c.hora }}</span>
+
+            <a href="/delete/consultas/{{ loop.index0 }}" class="delete">🗑️</a>
+        </div>
+        {% endfor %}
+
+        {% for m in dados.mamadas %}
+        <div class="event green">
+            🍼 Mamada
+            <span>{{ m.horario }}</span>
+
+            <a href="/delete/mamadas/{{ loop.index0 }}" class="delete">🗑️</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- FORM -->
+    <div class="form-section">
+
+        <h3>➕ Adicionar</h3>
+
+        <!-- MAMADA -->
+        <form action="/add_mamada" method="POST">
+            <input type="datetime-local" name="horario" required>
+            <button>Salvar 🍼</button>
+        </form>
+
+        <!-- CONSULTA -->
+        <form action="/add_consulta" method="POST">
+            <input type="text" name="tipo" placeholder="Consulta" required>
+            <input type="date" name="data" required>
+            <input type="time" name="hora" required>
+            <input type="text" name="local" placeholder="Local">
+            <button>Salvar 🏥</button>
+        </form>
+
+        <!-- REMÉDIO -->
+        <form action="/add_remedio" method="POST">
+            <input name="nome" placeholder="Nome do remédio" required>
+
+            <label>Horário que deu:</label>
+            <input type="datetime-local" name="inicio" required>
+
+            <label>Intervalo (horas):</label>
+            <input type="number" name="intervalo" required>
+
+            <button>Salvar 💊</button>
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

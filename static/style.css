@@ -1,0 +1,146 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #ffeaf4, #fff);
+}
+
+/* APP */
+.app {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+}
+
+.header img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.card {
+    flex: 1;
+    padding: 15px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card span {
+    font-size: 30px;
+    display: block;
+}
+
+.pink { background: #ff4da6; }
+.purple { background: #a66cff; }
+.green { background: #5ecf9a; }
+
+.event {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 12px 15px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+}
+
+.event span {
+    margin-left: auto;
+    margin-right: 10px;
+    font-size: 13px;
+}
+
+/* AÇÕES */
+.acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.ok {
+    text-decoration: none;
+    font-size: 18px;
+    color: green;
+}
+
+.delete {
+    text-decoration: none;
+    font-size: 18px;
+    color: red;
+}
+
+.ok:hover {
+    transform: scale(1.2);
+}
+
+.delete:hover {
+    transform: scale(1.2);
+}
+
+/* FORM */
+.form-section {
+    margin-top: 30px;
+}
+
+input {
+    width: 100%;
+    margin: 5px 0;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #ff4da6;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+/* INPUTS MODERNOS */
+input {
+    background: #fff;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #ff4da6;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255,77,166,0.3);
+}
+
+/* BOTÃO MAIS BONITO */
+button {
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.03);
+    background: #ff2f91;
+}
