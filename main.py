@@ -138,9 +138,12 @@ def onesignal_worker():
     return send_from_directory("static", "OneSignalSDKWorker.js")
 
 @app.route("/teste_notificacao")
-def teste_notificacao():
-    enviar_notificacao("Teste 🚀", "Chegou no celular!")
-    return "Notificação enviada!"
+def teste():
+    try:
+        enviar_notificacao()
+        return "Notificação enviada!"
+    except Exception as e:
+        return f"Erro: {str(e)}"
 
 if __name__ == "__main__":
     enviar_notificacao("Teste 🚀", "Notificação funcionando!")
