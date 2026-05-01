@@ -1,8 +1,14 @@
 from flask import Flask, render_template, request, redirect
 import json
 from datetime import datetime, timedelta
-
+import requests
 app = Flask(__name__, static_url_path='', static_folder='.')
+# ======================
+# ONESIGNAL CONFIG
+# ======================
+
+ONESIGNAL_APP_ID = "adc50cce-7803-4997-b030-16e794a792bb"
+ONESIGNAL_API_KEY = "os_v2_app_vxcqzttyanezpmbqc3tzjj4sxpwx27fkhe7urg4i47q6voo344ajtqoz4sdmjrwc3agwvpwsi5c7clzz2c2xtqvi3ts4vsktqkiue6a"
 
 # ======================
 # BANCO DE DADOS
@@ -15,7 +21,23 @@ def carregar():
 def salvar(dados):
     with open("banco_dados.json", "w") as f:
         json.dump(dados, f, indent=4)
+def enviar_notificacao(titulo, mensagem):
+    url = "https://onesignal.com/api/v1/notifications"
 
+    headers = {
+        "Content-Type": "application/json; charset=utf-8",
+        "Authorization": f"Basic {ONESIGNAL_API_KEY}"
+    }
+
+    payload = {
+        "app_id": ONESIGNAL_APP_ID,
+        "included_segments": ["All"],
+        "headings": {"en": titulo},
+        "contents": {"en": mensagem}
+    }
+
+    response = requests.post(url, headers=headers, json=payload)
+    print(response.text)
 # ======================
 # ROTAS
 # ======================
@@ -115,4 +137,5 @@ def onesignal_worker():
     return app.send_static_file("OneSignalSDKWorker.js")
 
 if __name__ == "__main__":
+    enviar_notificacao("Teste 🚀", "Notificação funcionando!")
     app.run()
