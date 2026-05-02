@@ -10,7 +10,7 @@ app = Flask(__name__)
 # ======================
 
 ONESIGNAL_APP_ID = "adc50cce-7803-4997-b030-16e794a792bb"
-ONESIGNAL_API_KEY = "os_v2_app_vxcqzttyanezpmbqc3tzjj4sxpbrged7mf2ecwnhbriufpzhhvra75z4qwwzkfefg2auzvgv5dig6yzwihug4uzfbutuhatvh2sbozi"
+ONESIGNAL_API_KEY = "os_v2_app_vxcqzttyanezpmbqc3tzjj4sxnpfeg6hynouimeeyxn6ytk6zglrwxvgkkqh6i55e4a6avara3j34zu2klcu3c7a6agpccubhkecubi"
 
 # ======================
 # BANCO DE DADOS
