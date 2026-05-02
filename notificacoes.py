@@ -3,7 +3,7 @@ import json
 
 # 🔴 COLE AQUI SEUS DADOS DO ONESIGNAL
 ONESIGNAL_APP_ID = "adc50cce-7803-4997-b030-16e794a792bb"
-ONESIGNAL_REST_API_KEY = "os_v2_app_vxcqzttyanezpmbqc3tzjj4sxo6uugad4daepdfcntvtomfa2z3ajkxnh5fyif26wz64drxkos2izvzxqegsw2huzgatgrki5hyjmvy"
+ONESIGNAL_REST_API_KEY = "os_v2_app_vxcqzttyanezpmbqc3tzjj4sxpjhn22yg2lebnuhm5ywqeavkz6s4gxkripzaevs3gpwpu4tajtw43xili3wtdk3jkemvpg3uez27za"
 
 
 def enviar_notificacao():
